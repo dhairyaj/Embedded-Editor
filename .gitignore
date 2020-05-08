@@ -1,0 +1,6 @@
+__pycache__
+.DS_Store
+static/*.pls
+static/*.bc
+out.txt
+run.sh
