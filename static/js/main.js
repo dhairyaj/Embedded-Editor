@@ -29,6 +29,10 @@ $("#submit").click(function() {
 			dataType: "json",
 			data: {"code": code, "filename": filename},
 			success: function(result) {
+				if(result.icon == 'success') {
+					$("#code").val("");
+					$("#filename").val("");
+				}
 				Swal.fire({
 					icon: result.icon,
 					title: result.title,

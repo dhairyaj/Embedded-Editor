@@ -14,7 +14,11 @@ app.config['SESSION_TYPE'] = 'filesystem'
 def index():
 
 	if request.method == 'GET':
-		return render_template('index.html')
+		version = subprocess.getoutput('./pulse version')
+
+		version = version.split("\n")[3]
+
+		return render_template('index.html', version=version)
 
 @app.route('/run', methods=['POST'])
 def run():
