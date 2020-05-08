@@ -45,6 +45,12 @@ def run():
 
 			s3 = boto3.resource('s3')
 
-			s3.Bucket(S3_BUCKET).upload_file(filename, "codes/" + filename.split("/")[-1])
+			bucket = s3.Bucket(S3_BUCKET)
+
+			objs = list(bucket.objects.filter(Prefix=filename))
+
+			print(objs)
+
+			bucket.upload_file(filename, "codes/" + filename.split("/")[-1])
 
 	return jsonify({"icon": icon, "title": title, "text": text})
