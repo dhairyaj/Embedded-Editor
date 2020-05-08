@@ -54,9 +54,7 @@ def run():
 		      ExpiresIn = 3600
 		    )
 
-			json.dumps({
-			  'data': presigned_post,
-			  'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, filename)
-			})
+			print(presigned_post)
+			print('https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, filename))
 
 		return jsonify({"icon": icon, "title": title, "text": text})
