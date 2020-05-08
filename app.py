@@ -1,5 +1,8 @@
 from flask import Flask, request, render_template, redirect, flash, jsonify, send_from_directory
 import subprocess
+import os
+import json
+import boto3
 
 app = Flask(__name__)
 
@@ -18,8 +21,11 @@ def run():
 
 	if request.method == 'POST':
 
+		S3_BUCKET = os.environ.get('S3_BUCKET')
+
 		code = request.form['code']
 		filename = "static/codes/" + request.form['filename']
+		file_type = "application/pls+xml"
 
 		file = open(filename, "w")
 		file.write(code)
@@ -32,5 +38,23 @@ def run():
 		if('== code ==' in text):
 			icon = 'success'
 			title = 'Interpreted Successfully'
+
+			s3 = boto3.client('s3')
+
+			presigned_post = s3.generate_presigned_post(
+		      Bucket = S3_BUCKET,
+		      Key = filename,
+		      Fields = {"acl": "public-read", "Content-Type": file_type},
+		      Conditions = [
+		        {"acl": "public-read"},
+		        {"Content-Type": file_type}
+		      ],
+		      ExpiresIn = 3600
+		    )
+
+			json.dumps({
+			  'data': presigned_post,
+			  'url': 'https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, filename)
+			})
 
 		return jsonify({"icon": icon, "title": title, "text": text})
