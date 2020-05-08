@@ -47,7 +47,7 @@ def run():
 
 			bucket = s3.Bucket(S3_BUCKET)
 
-			objs = list(bucket.objects.filter(Prefix=filename.split("/")[-1]))
+			objs = list(bucket.objects.filter(Prefix="codes/" + filename.split("/")[-1]))
 
 			print(objs)
 
