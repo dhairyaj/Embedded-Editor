@@ -25,7 +25,7 @@ def run():
 
 		code = request.form['code']
 		filename = "static/codes/" + request.form['filename']
-		file_type = "text/plain"
+		file_type = "text"
 
 		file = open(filename, "w")
 		file.write(code)
@@ -41,7 +41,7 @@ def run():
 
 			s3 = boto3.client('s3')
 
-			print(S3_BUCKET)
+			filename = filename.split('/')[-1]
 
 			presigned_post = s3.generate_presigned_post(
 		      Bucket = S3_BUCKET,
