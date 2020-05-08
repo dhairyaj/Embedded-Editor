@@ -47,10 +47,13 @@ def run():
 
 			bucket = s3.Bucket(S3_BUCKET)
 
-			objs = list(bucket.objects.filter(Prefix="codes/" + filename.split("/")[-1]))
+			file_name = "codes/" + filename.split("/")[-1]
 
-			print(objs)
+			objs = list(bucket.objects.filter(Prefix=file_name))
 
-			bucket.upload_file(filename, "codes/" + filename.split("/")[-1])
+			if(if file_name in [w.key for w in objs]):
+				return jsonify({"icon": "error", "title": "File exists!", "text": "File already exists in S3"})
+
+			bucket.upload_file(filename, file_name)
 
 	return jsonify({"icon": icon, "title": title, "text": text})
