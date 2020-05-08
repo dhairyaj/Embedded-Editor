@@ -1,5 +1,3 @@
 __pycache__
 .DS_Store
-static/codes/*.pls
-static/codes/*.bc
 run.sh
