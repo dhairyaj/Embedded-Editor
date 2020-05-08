@@ -19,15 +19,18 @@ def run():
 	if request.method == 'POST':
 
 		code = request.form['code']
+		filename = "static/codes/" + request.form['filename']
 
-		file = open("static/test.pls", "w")
+		file = open(filename, "w")
 		file.write(code)
 		file.close()
 
-		output = subprocess.getoutput('pulse static/test.pls')
+		text = subprocess.getoutput('pulse ' + filename)
 
-		file = open("out.txt", "w")
-		file.write(output)
-		file.close()
+		icon = 'error'
+		title = 'Interpret Error'
+		if('== code ==' in text):
+			icon = 'success'
+			title = 'Interpreted Successfully'
 
-		return jsonify({"done": "done"})
+		return jsonify({"icon": icon, "title": title, "text": text})

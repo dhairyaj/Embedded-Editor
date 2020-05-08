@@ -14,13 +14,27 @@ CodeMirror.commands.autocomplete = function(cm) {
 
 $("#submit").click(function() {
 	var code = editor.getValue() + "\n";
-	$.ajax({
-		url: "/run",
-		type: "post",
-		dataType: "json",
-		data: {"code": code},
-		success: function(result) {
-			alert(result.done);
-		}
-	});
+	var filename = $("#filename").val();
+
+	if(!code || !filename) {
+		Swal.fire({
+		  icon: 'error',
+		  title: 'Error',
+		  text: 'Both inputs are required!'
+		});
+	} else {
+		$.ajax({
+			url: "/run",
+			type: "post",
+			dataType: "json",
+			data: {"code": code, "filename": filename},
+			success: function(result) {
+				Swal.fire({
+					icon: result.icon,
+					title: result.title,
+					html: "<pre style='text-align: left;'>" + result.text + "</pre>"
+				})
+			}
+		});
+	}
 });
