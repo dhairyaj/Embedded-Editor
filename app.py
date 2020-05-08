@@ -18,6 +18,8 @@ def index():
 
 		version = version.split("\n")[3]
 
+		S3_BUCKET = os.environ.get('S3_BUCKET')
+
 		s3 = boto3.resource('s3')
 		bucket = s3.Bucket(S3_BUCKET)
 
