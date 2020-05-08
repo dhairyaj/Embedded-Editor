@@ -41,20 +41,26 @@ def run():
 
 			s3 = boto3.client('s3')
 
-			filename = filename.split('/')[-1]
+			s3_connection = boto3.connect_s3()
+			bucket = s3_connection.get_bucket(S3_BUCKET)
+			key = boto.s3.key.Key(bucket, filename)
+			with open(filename) as f:
+			    key.send_file(f)
 
-			presigned_post = s3.generate_presigned_post(
-		      Bucket = S3_BUCKET,
-		      Key = filename,
-		      Fields = {"acl": "public-read", "Content-Type": file_type},
-		      Conditions = [
-		        {"acl": "public-read"},
-		        {"Content-Type": file_type}
-		      ],
-		      ExpiresIn = 3600
-		    )
-
-			print(presigned_post)
-			print('https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, filename))
+			# filename = filename.split('/')[-1]
+			#
+			# presigned_post = s3.generate_presigned_post(
+		    #   Bucket = S3_BUCKET,
+		    #   Key = filename,
+		    #   Fields = {"acl": "public-read", "Content-Type": file_type},
+		    #   Conditions = [
+		    #     {"acl": "public-read"},
+		    #     {"Content-Type": file_type}
+		    #   ],
+		    #   ExpiresIn = 3600
+		    # )
+			#
+			# print(presigned_post)
+			# print('https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, filename))
 
 		return jsonify({"icon": icon, "title": title, "text": text})
