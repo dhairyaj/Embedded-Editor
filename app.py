@@ -41,22 +41,6 @@ def run():
 
 			s3 = boto3.resource('s3')
 
-			s3.Bucket(S3_BUCKET).upload_file(filename, "dump/file")
+			s3.Bucket(S3_BUCKET).upload_file(filename, "codes/" + filename.split("/")[-1])
 
-			# filename = filename.split('/')[-1]
-			#
-			# presigned_post = s3.generate_presigned_post(
-		    #   Bucket = S3_BUCKET,
-		    #   Key = filename,
-		    #   Fields = {"acl": "public-read", "Content-Type": file_type},
-		    #   Conditions = [
-		    #     {"acl": "public-read"},
-		    #     {"Content-Type": file_type}
-		    #   ],
-		    #   ExpiresIn = 3600
-		    # )
-			#
-			# print(presigned_post)
-			# print('https://%s.s3.amazonaws.com/%s' % (S3_BUCKET, filename))
-
-		return jsonify({"icon": icon, "title": title, "text": text})
+	return jsonify({"icon": icon, "title": title, "text": text})
