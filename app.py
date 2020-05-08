@@ -25,7 +25,7 @@ def run():
 
 		code = request.form['code']
 		filename = "static/codes/" + request.form['filename']
-		file_type = "application/pls+xml"
+		file_type = "text/plain"
 
 		file = open(filename, "w")
 		file.write(code)
