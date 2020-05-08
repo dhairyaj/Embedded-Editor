@@ -41,6 +41,8 @@ def run():
 
 			s3 = boto3.client('s3')
 
+			print(S3_BUCKET)
+
 			presigned_post = s3.generate_presigned_post(
 		      Bucket = S3_BUCKET,
 		      Key = filename,
