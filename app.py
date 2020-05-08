@@ -23,7 +23,7 @@ def index():
 		s3 = boto3.resource('s3')
 		bucket = s3.Bucket(S3_BUCKET)
 
-		files = bucket.list(prefix='codes/')
+		files = bucket.objects.filter(Prefix='codes/')
 
 		return render_template('index.html', version=version, files=len(files))
 
