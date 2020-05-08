@@ -25,6 +25,8 @@ def index():
 
 		files = bucket.objects.filter(Prefix='codes/')
 
+		print(files)
+
 		return render_template('index.html', version=version, files=len(files))
 
 @app.route('/run', methods=['POST'])
