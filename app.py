@@ -41,11 +41,7 @@ def run():
 
 			s3 = boto3.client('s3')
 
-			s3_connection = boto3.connect_s3()
-			bucket = s3_connection.get_bucket(S3_BUCKET)
-			key = boto.s3.key.Key(bucket, filename)
-			with open(filename) as f:
-			    key.send_file(f)
+			s3.Bucket(S3_BUCKET).upload_file(filename, "dump/file")
 
 			# filename = filename.split('/')[-1]
 			#
