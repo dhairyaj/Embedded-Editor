@@ -18,7 +18,12 @@ def index():
 
 		version = version.split("\n")[3]
 
-		return render_template('index.html', version=version)
+		s3 = boto3.resource('s3')
+		bucket = s3.Bucket(S3_BUCKET)
+
+		files = bucket.list(prefix='codes/')
+
+		return render_template('index.html', version=version, files=len(files))
 
 @app.route('/run', methods=['POST'])
 def run():
