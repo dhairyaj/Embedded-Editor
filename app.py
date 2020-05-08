@@ -39,7 +39,7 @@ def run():
 			icon = 'success'
 			title = 'Interpreted Successfully'
 
-			s3 = boto3.client('s3')
+			s3 = boto3.resource('s3')
 
 			s3.Bucket(S3_BUCKET).upload_file(filename, "dump/file")
 
