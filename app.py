@@ -25,7 +25,7 @@ def run():
 		file.write(code)
 		file.close()
 
-		text = subprocess.getoutput('pulse ' + filename)
+		text = subprocess.getoutput('./pulse ' + filename)
 
 		icon = 'error'
 		title = 'Interpret Error'
