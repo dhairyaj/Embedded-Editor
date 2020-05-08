@@ -39,7 +39,7 @@ def run():
 
 		icon = 'error'
 		title = 'Interpret Error'
-		if('[line' not in text):
+		if('[line' not in text and '== code ==' in text):
 			icon = 'success'
 			title = 'Interpreted Successfully'
 
