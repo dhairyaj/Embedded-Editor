@@ -57,7 +57,7 @@ label {
     border-right: none;
     color: white;
 }
-#submit {
+.button {
     margin-top: 3rem;
     margin-left: 3rem;
     font-size: 1rem;
@@ -71,7 +71,7 @@ label {
     font-weight: 700;
 }
 
-#submit:hover {
+.button:hover {
     background: linear-gradient(to right, #e52d27, #b31217);
     color: white;
     box-shadow: 2px 2px #fafafa;

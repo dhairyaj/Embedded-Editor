@@ -12,7 +12,7 @@ CodeMirror.commands.autocomplete = function(cm) {
      CodeMirror.simpleHint(cm, CodeMirror.pythonHint);
 }
 
-$("#submit").click(function() {
+$("#run").click(function() {
 	var code = editor.getValue() + "\n";
 	var filename = $("#filename").val();
 
@@ -25,6 +25,33 @@ $("#submit").click(function() {
 	} else {
 		$.ajax({
 			url: "/run",
+			type: "post",
+			dataType: "json",
+			data: {"code": code, "filename": filename},
+			success: function(result) {
+				Swal.fire({
+					icon: result.icon,
+					title: result.title,
+					html: "<pre style='text-align: left;'>" + result.text + "</pre>"
+				})
+			}
+		});
+	}
+});
+
+$("#submit").click(function() {
+	var code = editor.getValue() + "\n";
+	var filename = $("#filename").val();
+
+	if(!code || !filename) {
+		Swal.fire({
+		  icon: 'error',
+		  title: 'Error',
+		  text: 'Both inputs are required!'
+		});
+	} else {
+		$.ajax({
+			url: "/submit",
 			type: "post",
 			dataType: "json",
 			data: {"code": code, "filename": filename},

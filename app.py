@@ -25,6 +25,28 @@ def run():
 
 	if request.method == 'POST':
 
+		code = request.form['code']
+		filename = "static/codes/" + request.form['filename']
+
+		file = open(filename, "w")
+		file.write(code)
+		file.close()
+
+		text = subprocess.getoutput('./pulse ' + filename)
+
+		icon = 'error'
+		title = 'Error'
+		if('[line' not in text and '== code ==' in text):
+			icon = 'success'
+			title = 'Success'
+
+	return jsonify({"icon": icon, "title": title, "text": text})
+
+@app.route('/submit', methods=['POST'])
+def submit():
+
+	if request.method == 'POST':
+
 		S3_BUCKET = os.environ.get('S3_BUCKET')
 
 		code = request.form['code']
@@ -38,10 +60,11 @@ def run():
 		text = subprocess.getoutput('./pulse ' + filename)
 
 		icon = 'error'
-		title = 'Interpret Error'
+		title = 'Error'
 		if('[line' not in text and '== code ==' in text):
 			icon = 'success'
-			title = 'Interpreted Successfully'
+			title = 'Success'
+			text = 'Submitted successfully to S3!'
 
 			s3 = boto3.resource('s3')
 
