@@ -30,7 +30,7 @@ $("#submit").click(function() {
 			data: {"code": code, "filename": filename},
 			success: function(result) {
 				if(result.icon == 'success') {
-					$("#code").val("");
+					editor.setValue("");
 					$("#filename").val("");
 				}
 				Swal.fire({
