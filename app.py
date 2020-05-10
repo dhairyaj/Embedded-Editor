@@ -10,6 +10,19 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.secret_key = 'my-secret-key'
 app.config['SESSION_TYPE'] = 'filesystem'
 
+def timeout_command(command, timeout):
+  import subprocess, datetime, os, time, signal
+  start = datetime.datetime.now()
+  process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+  while process.poll() is None:
+    time.sleep(0.1)
+    now = datetime.datetime.now()
+    if (now - start).seconds > timeout:
+      os.kill(process.pid, signal.SIGKILL)
+      os.waitpid(-1, os.WNOHANG)
+      return "Infinite loop"
+  return subprocess.getoutput(" ".join(command))
+
 @app.route('/', methods=['GET'])
 def index():
 
@@ -32,7 +45,7 @@ def run():
 		file.write(code)
 		file.close()
 
-		text = subprocess.getoutput('./pulse ' + filename)
+		text = timeout_command(command, 3)
 
 		icon = 'error'
 		title = 'Error'
@@ -57,7 +70,7 @@ def submit():
 		file.write(code)
 		file.close()
 
-		text = subprocess.getoutput('./pulse ' + filename)
+		text = timeout_command(command, 3)
 
 		icon = 'error'
 		title = 'Error'

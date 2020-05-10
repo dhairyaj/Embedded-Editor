@@ -36,12 +36,18 @@ $("#run").click(function() {
 		  text: result
 		});
 	} else {
+    Swal.fire(
+      'Please wait...',
+      'Code is being interpreted',
+      'question'
+    )
 		$.ajax({
 			url: "/run",
 			type: "post",
 			dataType: "json",
 			data: {"code": code, "filename": filename},
 			success: function(result) {
+        Swal.close();
 				Swal.fire({
 					icon: result.icon,
 					title: result.title,
@@ -65,6 +71,11 @@ $("#submit").click(function() {
 		  text: result
 		});
 	} else {
+    Swal.fire(
+      'Please wait...',
+      'Code is being interpreted',
+      'question'
+    )
 		$.ajax({
 			url: "/submit",
 			type: "post",
@@ -75,6 +86,7 @@ $("#submit").click(function() {
 					editor.setValue("");
 					$("#filename").val("");
 				}
+        Swal.close();
 				Swal.fire({
 					icon: result.icon,
 					title: result.title,
