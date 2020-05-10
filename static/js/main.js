@@ -14,7 +14,7 @@ CodeMirror.commands.autocomplete = function(cm) {
 
 function checkInput(code, filename) {
   var errorString = "";
-  if(code.length == 0)
+  if(code.length == 1)
     errorString += "\nEnter some code!\n";
   if(filename.length == 0)
     errorString += "\nEnter some filename!\n";
