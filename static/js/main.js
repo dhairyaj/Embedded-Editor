@@ -14,11 +14,11 @@ CodeMirror.commands.autocomplete = function(cm) {
 
 function checkInput(code, filename) {
   var errorString = "";
-  if(!code)
+  if(code.length == 0)
     errorString += "\nEnter some code!\n";
-  if(!filename)
+  if(filename.length == 0)
     errorString += "\nEnter some filename!\n";
-  if(filename != "" && /Q[0-9]+.pls/.test(filename) == false)
+  if(filename.length != 0 && /Q[0-9]+.pls/.test(filename) == false)
     errorString += "\nFilename not in correct format!\n";
   return errorString;
 }
