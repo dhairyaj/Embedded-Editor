@@ -18,7 +18,7 @@ function checkInput(code, filename) {
     errorString += "\nEnter some code!\n";
   if(!filename)
     errorString += "\nEnter some filename!\n";
-  if(/Q[0-9]+.pls/.test(filename) == false)
+  if(filename != "" && /Q[0-9]+.pls/.test(filename) == false)
     errorString += "\nFilename not in correct format!\n";
   return errorString;
 }
