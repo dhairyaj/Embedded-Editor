@@ -12,15 +12,28 @@ CodeMirror.commands.autocomplete = function(cm) {
      CodeMirror.simpleHint(cm, CodeMirror.pythonHint);
 }
 
+function checkInput(code, filename) {
+  var errorString = "";
+  if(!code)
+    errorString += "\nEnter some code!\n";
+  if(!filename)
+    errorString += "\nEnter some filename!\n";
+  if(/Q[0-9]+.pls/.test(filename) == false)
+    errorString += "\nFilename not in correct format!\n";
+  return errorString;
+}
+
 $("#run").click(function() {
 	var code = editor.getValue() + "\n";
 	var filename = $("#filename").val();
 
-	if(!code || !filename) {
+  var result = checkInput(code, filename);
+
+	if(result != "") {
 		Swal.fire({
 		  icon: 'error',
 		  title: 'Error',
-		  text: 'Both inputs are required!'
+		  text: result
 		});
 	} else {
 		$.ajax({
@@ -43,11 +56,13 @@ $("#submit").click(function() {
 	var code = editor.getValue() + "\n";
 	var filename = $("#filename").val();
 
-	if(!code || !filename) {
+  var result = checkInput(code, filename);
+
+	if(result != "") {
 		Swal.fire({
 		  icon: 'error',
 		  title: 'Error',
-		  text: 'Both inputs are required!'
+		  text: result
 		});
 	} else {
 		$.ajax({
