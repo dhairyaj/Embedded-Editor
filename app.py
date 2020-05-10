@@ -45,7 +45,7 @@ def run():
 		file.write(code)
 		file.close()
 
-		text = timeout_command(command, 3)
+		text = timeout_command(["./pulse", filename], 3)
 
 		icon = 'error'
 		title = 'Error'
@@ -70,7 +70,7 @@ def submit():
 		file.write(code)
 		file.close()
 
-		text = timeout_command(command, 3)
+		text = timeout_command(["./pulse", filename], 3)
 
 		icon = 'error'
 		title = 'Error'
