@@ -20,6 +20,8 @@ function checkInput(code, filename) {
     errorString += "\nEnter some filename!\n";
   if(filename.length != 0 && /Q[0-9]+.pls/.test(filename) == false)
     errorString += "\nFilename not in correct format!\n";
+  if(code.split("\n")[0][0] != "~")
+    errorString += "\nAuthor token missing!";
   return errorString;
 }
 
