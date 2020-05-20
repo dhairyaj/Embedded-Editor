@@ -1,58 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/style.css" />
 
     <!--Codemirror CSS-->
-    <link rel="stylesheet" href="static/css/codemirror.css">
+    <link rel="stylesheet" href="static/css/codemirror.css" />
 
     <!--Simple-Hint CSS-->
-    <link rel="stylesheet" href="static/css/simple-hint.css">
+    <link rel="stylesheet" href="static/css/simple-hint.css" />
 
-		<!--jQuery-->
-		<script type="text/javascript" src="static/js/jquery.min.js"></script>
+    <!--jQuery-->
+    <script type="text/javascript" src="static/js/jquery.min.js"></script>
 
     <title>Editor</title>
-	</head>
-	<body>
+  </head>
+  <body>
+    <h2>Pulse Editor - {{version}}</h2>
+    <article>
+      <div>
+        <textarea id="code"></textarea>
+      </div>
+    </article>
+    <label for="filename">File Name: &nbsp;</label>
+    <input type="text" id="filename" />
 
-		<h2>Pulse Editor - {{version}}</h2>
-		<article>
-			<div>
-				<textarea id="code"></textarea>
-			</div>
-		</article>
-		<label for="filename">File Name: &nbsp;</label>
-		<input type="text" id="filename">
+    <input type="button" class="button" id="run" value="Run Code" /> &nbsp;
+    &nbsp;
+    <input type="button" class="button" id="submit" value="Submit Code" />
 
-		<input type="button" class="button" id="run" value="Run Code"> &nbsp; &nbsp;
-		<input type="button" class="button" id="submit" value="Submit Code">
+    <div class="footer">
+      <p>Developed By Dhairya Jain</p>
+    </div>
 
+    <!--Codemirror JS-->
+    <script src="static/js/codemirror.js"></script>
 
-		<!--Codemirror JS-->
-		<script src="static/js/codemirror.js"></script>
+    <!--Matchbrackets JS-->
+    <script src="static/js/matchbrackets.js"></script>
 
-		<!--Matchbrackets JS-->
-		<script src="static/js/matchbrackets.js"></script>
+    <!--Python-hint JS-->
+    <script src="static/js/python-hint.js"></script>
 
-		<!--Python-hint JS-->
-		<script src="static/js/python-hint.js"></script>
+    <!--simple-hint JS-->
+    <script src="static/js/simple-hint.js"></script>
 
-		<!--simple-hint JS-->
-		<script src="static/js/simple-hint.js"></script>
+    <!--python JS-->
+    <script src="static/js/python.js"></script>
 
-		<!--python JS-->
-		<script src="static/js/python.js"></script>
+    <!--Sweetalert JS-->
+    <script src="static/js/sweetalert.min.js"></script>
 
-		<!--Sweetalert JS-->
-		<script src="static/js/sweetalert.min.js"></script>
-
-		<!--main JS-->
-		<script src="static/js/main.js"></script>
-
-	</body>
+    <!--main JS-->
+    <script src="static/js/main.js"></script>
+  </body>
 </html>

@@ -1,79 +1,90 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:ital,wght@1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Playfair+Display:ital,wght@1,500&display=swap");
 
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-size: 15px;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 15px;
 }
 
-input:focus, textarea:focus, select:focus{
-    outline: none;
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
 }
 
 body {
-    background: linear-gradient(to right, #232526, #414345);
-    font-family: 'Playfair Display', serif;
-    line-height: 1.5;
-    color: linear-gradient(to right, #8e0e00, #1f1c18);
+  background: linear-gradient(to right, #232526, #414345);
+  font-family: "Playfair Display", serif;
+  line-height: 1.5;
+  color: linear-gradient(to right, #8e0e00, #1f1c18);
 }
 
 h2 {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 4rem;
-    text-decoration: underline;
-    font-family: 'Playfair Display', serif;
-    background: linear-gradient(to right, #e52d27, #b31217);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 4rem;
+  text-decoration: underline;
+  font-family: "Playfair Display", serif;
+  background: linear-gradient(to right, #e52d27, #b31217);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 article {
-    padding: 3rem 3rem;
+  padding: 3rem 3rem;
 }
 
 label {
-    margin-top: 3rem;
-    margin-left: 3rem;
-    font-size: 1.5rem;
-    background: linear-gradient(to right, #e52d27, #b31217);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  font-size: 1.5rem;
+  background: linear-gradient(to right, #e52d27, #b31217);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 #filename {
-    width: 30%;
-    font-family: 'Montserrat', sans-serif;
-    margin-top: 3rem;
-    font-size: 1.5rem;
-    background: transparent;
-    border: 1px #b31217 solid;
-    border-top: none;
-    border-left: none;
-    border-right: none;
-    color: white;
+  width: 30%;
+  font-family: "Montserrat", sans-serif;
+  margin-top: 3rem;
+  font-size: 1.5rem;
+  background: transparent;
+  border: 1px #b31217 solid;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: white;
 }
 .button {
-    margin-top: 3rem;
-    margin-left: 3rem;
-    font-size: 1rem;
-    padding: 7px 7px;
-    background: transparent;
-    border: 1px white solid;
-    color: #b31217;
-    box-shadow: 3px 3px #b31217;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
+  margin-top: 3rem;
+  margin-left: 3rem;
+  font-size: 1rem;
+  padding: 7px 7px;
+  background: transparent;
+  border: 1px white solid;
+  color: #b31217;
+  box-shadow: 3px 3px #b31217;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }
 
 .button:hover {
-    background: linear-gradient(to right, #e52d27, #b31217);
-    color: white;
-    box-shadow: 2px 2px #fafafa;
-    border: 1px #b31217 solid;
+  background: linear-gradient(to right, #e52d27, #b31217);
+  color: white;
+  box-shadow: 2px 2px #fafafa;
+  border: 1px #b31217 solid;
+}
+
+.footer {
+  margin-top: 90vh;
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: center;
 }
